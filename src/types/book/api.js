@@ -26,6 +26,7 @@ const bookFromVolume = volumeInfo => {
             isbn13: isbn13 ? isbn13.identifier : null,
             other: isbnOther ? isbnOther.identifier : null,
         },
+        authors:  volumeInfo.authors ? volumeInfo.authors.map(name => ({ name })) : null
     };
 
     return book;
