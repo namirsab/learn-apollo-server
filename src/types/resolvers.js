@@ -6,7 +6,8 @@ export default {
             description: 'Return all books',
             resolve(root, { search }) {
                 return searchBooks(search)
-                    .then(({ items }) => items.map(({ volumeInfo }) => bookFromVolume(volumeInfo)));
+                    .then(({ items }) =>
+                        items.map(({ id, volumeInfo }) => bookFromVolume({ id, volumeInfo })));
             },
         },
         book: {
@@ -15,8 +16,8 @@ export default {
                 return getBookByISBN(isbn)
                     .then(({ totalItems, items }) => {
                         if (totalItems > 0) {
-                            const [{ volumeInfo }] = items;
-                            return bookFromVolume(volumeInfo);
+                            const [{ id, volumeInfo }] = items;
+                            return bookFromVolume({ id, volumeInfo });
                         }
 
                         return null;

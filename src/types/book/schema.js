@@ -1,5 +1,6 @@
 export default `
     type Book {
+        id: ID!,
         title: String!
         industryIdentifiers: IndustryIdentifiers
         authors(count: Int): [Author]

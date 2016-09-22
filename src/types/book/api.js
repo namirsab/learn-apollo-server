@@ -8,7 +8,7 @@ const GLOBAL_OPTIONS = {
     json: true,
 };
 
-const bookFromVolume = (volumeInfo) => {
+const bookFromVolume = ({ id, volumeInfo }) => {
     const isbn10 = _.find(volumeInfo.industryIdentifiers, {
         type: 'ISBN_10',
     });
@@ -20,6 +20,7 @@ const bookFromVolume = (volumeInfo) => {
     });
 
     const book = {
+        id,
         title: volumeInfo.title,
         industryIdentifiers: {
             isbn10: isbn10 ? isbn10.identifier : null,
