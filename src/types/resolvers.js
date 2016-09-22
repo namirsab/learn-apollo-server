@@ -6,10 +6,8 @@ export default {
             description: 'Return all books',
             resolve(root, { search }) {
                 return searchBooks(search)
-                    .then(({ totalItems, items}) => {
-                        return items.map(({ volumeInfo }) => bookFromVolume(volumeInfo));
-                    });
-            }
+                    .then(({ items }) => items.map(({ volumeInfo }) => bookFromVolume(volumeInfo)));
+            },
         },
         book: {
             description: 'Returns a book',
@@ -20,12 +18,10 @@ export default {
                             const [{ volumeInfo }] = items;
                             return bookFromVolume(volumeInfo);
                         }
-                        else {
-                            return null;
-                        }
-                        
+
+                        return null;
                     });
-            }
-        }
-    }
+            },
+        },
+    },
 };

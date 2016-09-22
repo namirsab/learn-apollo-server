@@ -4,14 +4,14 @@ export default {
         authors: {
             resolve({ authors }, { count }) {
                 return authors.slice(0, count);
-            }
-        }
-        
+            },
+        },
+
     },
     IndustryIdentifiers: {
-        __description: 'Industry identifiers for a Volume'
+        __description: 'Industry identifiers for a Volume',
     },
     Author: {
-        __description: 'A volume author'
-    }
+        __description: 'A volume author',
+    },
 };

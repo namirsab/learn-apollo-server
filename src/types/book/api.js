@@ -5,18 +5,18 @@ rp.debug = true;
 
 const GLOBAL_OPTIONS = {
     uri: 'https://www.googleapis.com/books/v1/volumes',
-    json: true
+    json: true,
 };
 
-const bookFromVolume = volumeInfo => {
+const bookFromVolume = (volumeInfo) => {
     const isbn10 = _.find(volumeInfo.industryIdentifiers, {
-        type: 'ISBN_10'
+        type: 'ISBN_10',
     });
     const isbn13 = _.find(volumeInfo.industryIdentifiers, {
-        type: 'ISBN_13'
+        type: 'ISBN_13',
     });
     const isbnOther = _.find(volumeInfo.industryIdentifiers, {
-        type: 'OTHER'
+        type: 'OTHER',
     });
 
     const book = {
@@ -26,28 +26,28 @@ const bookFromVolume = volumeInfo => {
             isbn13: isbn13 ? isbn13.identifier : null,
             other: isbnOther ? isbnOther.identifier : null,
         },
-        authors:  volumeInfo.authors ? volumeInfo.authors.map(name => ({ name })) : null
+        authors: volumeInfo.authors ? volumeInfo.authors.map(name => ({ name })) : null,
     };
 
     return book;
 };
 
-const getBookByISBN = isbn => {
+const getBookByISBN = (isbn) => {
     const options = Object.assign({}, GLOBAL_OPTIONS, {
         qs: {
-            q: `isbn:${isbn}`
-        }
+            q: `isbn:${isbn}`,
+        },
     });
     return rp(options);
 };
 
-const searchBooks = search => {
+const searchBooks = (search) => {
     const options = Object.assign({}, GLOBAL_OPTIONS, {
         qs: {
-            q: search
-        }
+            q: search,
+        },
     });
-    
+
     return rp(options);
 };
 
