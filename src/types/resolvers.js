@@ -1,4 +1,4 @@
-import { searchBooks, getBookByISBN } from './book/api.js';
+import { searchBooks, getBookByIndustryIdentifier } from './book/api.js';
 
 export default {
     Query: {
@@ -11,7 +11,7 @@ export default {
         book: {
             description: 'Returns a book',
             resolve(root, { isbn }) {
-                return getBookByISBN(isbn);
+                return getBookByIndustryIdentifier(isbn);
             },
         },
     },
