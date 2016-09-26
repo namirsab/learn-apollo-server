@@ -109,19 +109,26 @@ const getBookByIndustryIdentifier = (industryIdentifier) => {
  * @param {String} search - The search query
  * @param {Object} [searchOptions] - An object defining search options
  * @param {Number} searchOptions.maxResults = 10 - Max results (default 10 max 40)
+ * * @param {Number} searchOptions.startIndex = 0 - Starting index (default 0)
  * @returns {Promise.<Book[]>} An array of books if the promise is fullfilled
  */
-const searchBooks = (search, { maxResults }) => {
+const searchBooks = (search, { maxResults, startIndex }) => {
     const options = Object.assign({}, GLOBAL_OPTIONS, {
         qs: {
             q: search,
             maxResults,
+            startIndex,
         },
     });
 
     return rp(options)
-        .then(({ items }) =>
-            items.map(({ id, volumeInfo }) => bookFromVolume({ id, volumeInfo })));
+        .then(({ items }) => {
+            const books = items ?
+                items.map(({ id, volumeInfo }) => bookFromVolume({ id, volumeInfo }))
+                :
+                [];
+            return books;
+        });
 };
 
 export {
