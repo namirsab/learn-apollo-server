@@ -107,12 +107,15 @@ const getBookByIndustryIdentifier = (industryIdentifier) => {
 /**
  * @function searchBooks
  * @param {String} search - The search query
+ * @param {Object} [searchOptions] - An object defining search options
+ * @param {Number} searchOptions.maxResults = 10 - Max results (default 10 max 40)
  * @returns {Promise.<Book[]>} An array of books if the promise is fullfilled
  */
-const searchBooks = (search) => {
+const searchBooks = (search, { maxResults }) => {
     const options = Object.assign({}, GLOBAL_OPTIONS, {
         qs: {
             q: search,
+            maxResults,
         },
     });
 

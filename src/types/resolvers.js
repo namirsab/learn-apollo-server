@@ -4,8 +4,8 @@ export default {
     Query: {
         books: {
             description: 'Return all books',
-            resolve(root, { search }) {
-                return searchBooks(search);
+            resolve(root, { search, maxResults }) {
+                return searchBooks(search, { maxResults });
             },
         },
         book: {

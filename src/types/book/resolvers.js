@@ -3,7 +3,7 @@ export default {
         __description: 'A simple book',
         authors: {
             resolve({ authors }, { count }) {
-                return authors.slice(0, count);
+                return authors ? authors.slice(0, count) : [];
             },
         },
 
