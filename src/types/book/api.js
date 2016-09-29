@@ -75,6 +75,7 @@ const bookFromVolume = ({ id, volumeInfo }) => {
             other: isbnOther ? isbnOther.identifier : null,
         },
         authors: volumeInfo.authors ? volumeInfo.authors.map(name => ({ name })) : null,
+        imageLinks: volumeInfo.imageLinks,
     };
 
     return book;

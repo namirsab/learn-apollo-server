@@ -4,6 +4,7 @@ export default `
         title: String!
         industryIdentifiers: IndustryIdentifiers
         authors(count: Int): [Author]
+        imageLinks: BookImageLinks
     }
     
     type IndustryIdentifiers {
@@ -14,6 +15,11 @@ export default `
     
     type Author {
         name: String!
+    }
+
+    type BookImageLinks {
+        smallThumbnail: String
+        thumbnail: String
     }
 `;
 
