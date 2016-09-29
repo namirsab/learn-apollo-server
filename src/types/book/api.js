@@ -122,12 +122,16 @@ const searchBooks = (search, { maxResults, startIndex }) => {
     });
 
     return rp(options)
-        .then(({ items }) => {
+        .then(({ totalItems, items }) => {
             const books = items ?
                 items.map(({ id, volumeInfo }) => bookFromVolume({ id, volumeInfo }))
                 :
                 [];
-            return books;
+
+            return {
+                totalItems: totalItems || 0,
+                results: books,
+            };
         });
 };
 
