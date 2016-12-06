@@ -1,4 +1,5 @@
-import { searchBooks, getBookByIndustryIdentifier } from './book/api.js';
+import { searchBooks, getBookByIndustryIdentifier, addToFavourites, getFavourites } from './book/api.js';
+
 
 export default {
     Query: {
@@ -14,5 +15,19 @@ export default {
                 return getBookByIndustryIdentifier(isbn);
             },
         },
+        favourites: {
+            description: 'Get favourites books',
+            resolve() {
+                return getFavourites();
+            }
+        }
     },
+    Mutation: {
+        addToFavourites: {
+            description: 'Save a book into the savedBooks database',
+            resolve(root, { isbn }) {
+                return addToFavourites(isbn);
+            }
+        }
+    }
 };

@@ -6,6 +6,7 @@ import QueryResolvers from './types/resolvers.js';
 
 const Schema = `schema {
         query: Query
+        mutation: Mutation
     }
 `;
 

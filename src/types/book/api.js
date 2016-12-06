@@ -136,8 +136,24 @@ const searchBooks = (search, { maxResults, startIndex }) => {
         });
 };
 
+const favourites = [];
+
+const addToFavourites = (isbn) => {
+    return getBookByIndustryIdentifier(isbn)
+        .then((book) => {
+            favourites.push(book);
+            return book;
+        });
+};
+
+const getFavourites = () => {
+    return favourites;
+};
+
 export {
-getBookByIndustryIdentifier,
-searchBooks,
-bookFromVolume,
+    getBookByIndustryIdentifier,
+    searchBooks,
+    bookFromVolume,
+    addToFavourites,
+    getFavourites,
 };

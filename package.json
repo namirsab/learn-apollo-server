@@ -4,7 +4,7 @@
   "description": "Learn Apollo Server",
   "main": "lib/index.js",
   "scripts": {
-    "start": "PORT=3000 node lib/index.js",
+    "start": "node lib/index.js",
     "watch": "babel-watch src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d lib"
